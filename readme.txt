@@ -1,6 +1,5 @@
 === Is It Drafty In Here ===
 Contributors: AronMS
-Donate link:
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty
 Requires at least: 3.9.11
 Tested up to: 3.5
@@ -17,9 +16,16 @@ Get email notifications of draft post sitting in your WordPress Blog waiting to 
 This plugin aims to help get your productivity back on track after you abandon writing your next amazing post, by sending you friendly motivational email reminders when you specify.
 
 Features:
+
 * Schedule email reminders for unpublished draft posts
 * Specify which email address reminders are sent to
 * Send optional test emails when you save changes
+
+== Installation ==
+
+1. Unzip `drafty-in-here.zip` inside the `/wp-content/plugins/` directory (or install via the built-in WordPress plugin installer)
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. Set your email address and how frequently you want to be updated about unfinished draft posts
 
 == Frequently Asked Questions ==
 = Why did I not receive any email? = 
@@ -34,7 +40,7 @@ The email will never be sent if you do not have any draft posts.
 You can check this in the plugin admin screen.
 
 = Is your email address correct? =
-You can check this in the plugin admin scree.
+You can check this in the plugin admin screen.
 
 = Have you checked your email spam folder? =
 Sometimes email may end up in your spam folder.
