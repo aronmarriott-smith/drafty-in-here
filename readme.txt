@@ -1,4 +1,4 @@
-=== Is It Drafty In Here ===
+=== Drafty In Here ===
 Contributors: AronMS
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty
 Requires at least: 3.9.11
