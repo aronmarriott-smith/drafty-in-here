@@ -59,6 +59,8 @@ If you are not receiving emails for example when someone post a comment  or Word
 
 = 1.0 =
 * Initial release
+= 1.1 =
+* Added "support" for the users running php5.2
 
 == Discussion / Support ==
 
