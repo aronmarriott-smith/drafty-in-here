@@ -1,8 +1,8 @@
 === Drafty In Here ===
 Contributors: AronMS
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty
-Requires at least: 3.9.11
-Tested up to: 3.5
+Requires at least: 4.0
+Tested up to: 4.4.2
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -29,14 +29,23 @@ Features:
 
 == Frequently Asked Questions ==
 = Why did I not receive any email? = 
-Please read our Email Trouble Shooting Guide below for help. If you do not find your answer please post in the support forum and I will try to help you where I can.
+Please read our Email Trouble Shooting Guide for help. If you do not find your answer please post in the support forum and I will try to help you where I can.
+
+= How can I contribute to this plugin? =
+The code for [Drafty In Here is on GitHub](https://github.com/aronmarriott-smith/drafty-in-here), so if you If you are a WordPress developer feel free to take a look there - any pull request to the development branch are welcome.
+
+= How can I report a bug? =
+Bug reports for Drafty In Here are [welcomed on GitHub](https://github.com/aronmarriott-smith/drafty-in-here). Please note GitHub is *not* a support forum and issues that aren't properly qualified as bugs will be closed.
+
+= Where did you get your cool WordPress.org plgin banner? =
+The banner is a derivative of the original image ['University Life 143'](https://www.flickr.com/photos/francisco_osorio/9513730462/) created by [Francisco Osorio](https://www.flickr.com/photos/francisco_osorio/) and posted on Fickr under the [Creative Commons Attribution 2.0 Generic license](https://creativecommons.org/licenses/by/2.0/).
 
 == Email Trouble Shooting Guide ==
 *Not receiving Drafty emails?*
 = Do you have any draft posts? =
 The email will never be sent if you do not have any draft posts.
 
-= Have you scheduled your email?** 
+= Have you scheduled your email? =
 You can check this in the plugin admin screen.
 
 = Is your email address correct? =
