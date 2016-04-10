@@ -30,7 +30,7 @@ class Admin extends Drafty_In_Here implements AdminInterface
 
 
 	/**
-	 * Sets up our plug-in options using the WordPress settings PAI
+	 * Sets up our plug-in options using the WordPress settings API
 	 */
 	public function drafty_options_init() 
 	{
@@ -119,7 +119,7 @@ class Admin extends Drafty_In_Here implements AdminInterface
 	{ 
 		$date = Scheduler::next_sheduled(self::$cron_name);
 		if ( false !== $date ) {
-			$text = sprintf(__('Drafty is next sheduled to run %s', 'drafty-in-here'), 
+			$text = sprintf(__('Drafty is next scheduled to run %s', 'drafty-in-here'), 
 				$date->format('F j, Y, g:i a T')
 			);
 			echo '<p>'.$text.'</p>';

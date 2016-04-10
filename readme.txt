@@ -2,7 +2,7 @@
 Contributors: AronMS
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty
 Requires at least: 4.0
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -70,6 +70,11 @@ If you are not receiving emails for example when someone post a comment  or Word
 * Initial release
 = 1.1 =
 * Added "support" for the users running php5.2
+= 1.1.1 =
+* Fixed several typos
+* Replaced Carbon with PHP DateTime
+* Changed the minimum version of PHP required by Drafty to 5.3.2
+
 
 == Discussion / Support ==
 

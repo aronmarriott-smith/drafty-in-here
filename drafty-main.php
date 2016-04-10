@@ -7,7 +7,7 @@ if ( ! defined('ABSPATH') ) {
 }
 
 /**
- * Load our plugin dependences
+ * Load our plugin dependencies
  */
 require_once 'vendor/autoload.php';
 use Repositories\Admin\Admin;
@@ -81,7 +81,7 @@ class Drafty_In_Here
 	 * ````
 	 * Where SOME_FILTER would be the WordPress filter and SOME_METHOD_NAME would be a method inside our plugin.
 	 *
-	 * @return An instance of our plugin.
+	 * @return Drafty_In_Here
 	 */
 	static function this()
 	{
@@ -150,6 +150,10 @@ class Drafty_In_Here
 
 	/**
 	 * Add Settings link in plugins admin section
+	 * 
+	 * @param $action_links
+	 * @param $plugin_file
+	 * @return mixed
 	 */
 	public function drafty_settings_link($action_links, $plugin_file) {
 		if ( $plugin_file == plugin_basename(__FILE__) ) {
@@ -162,10 +166,14 @@ class Drafty_In_Here
 
 	/**
 	 * Gets posts of given type with given status.
-	 * 
-	 * @param  string or array $type the post type
-	 * @param  string or array $status the post status 
-	 * @return WordPress post object or false if we have no data
+	 *
+	 * @param string $type
+	 * @param string $status
+	 * @return WP_Query
+	 * @throws Exception
+	 * @internal param or $string array $type the post type
+	 * @internal param or $string array $status the post status
+	 *
 	 */
 	public function get_posts($type = 'post', $status = 'draft')
 	{
@@ -220,7 +228,7 @@ class Drafty_In_Here
 		$text = $this->build_message($posts, $test);
 		$html = nl2br($text);
 
-		Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
+		return Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
 	}
 
 	public function build_message($posts, $test)

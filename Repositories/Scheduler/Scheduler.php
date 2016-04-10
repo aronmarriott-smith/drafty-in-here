@@ -1,6 +1,6 @@
 <?php namespace Repositories\Scheduler;
 
-use Carbon\Carbon;
+use Repositories\Options\Options;
 
 class Scheduler implements SchedulerInterface
 {
@@ -14,11 +14,11 @@ class Scheduler implements SchedulerInterface
 	 * @param  string $frequency  How often the event should fire
 	 * @return void
 	 */
-	public static function add($event_name = '', $frequency = 'hourly')
+	public static function add( $event_name = '', $frequency = 'hourly' )
 	{
-		if ( ! wp_next_scheduled($event_name) ) {
-			$interval = self::getSecondsInterval($frequency);
-			wp_schedule_event(time() + $interval, $frequency, $event_name);
+		if ( ! wp_next_scheduled( $event_name ) ) {
+			$interval = self::get_seconds_interval( $frequency );
+			wp_schedule_event( time() + $interval, $frequency, $event_name );
 		}
 	}
 
@@ -29,47 +29,40 @@ class Scheduler implements SchedulerInterface
 	 * @param  string $event_name Name of the wp_cron event.
 	 * @return void
 	 */
-	public static function remove($event_name = '') 
+	public static function remove( $event_name = '' ) 
 	{
-		if ( false !== ($time = wp_next_scheduled($event_name)) ) {
-			wp_unschedule_event($time, $event_name);
+		if ( false !== ( $time = wp_next_scheduled( $event_name ) ) ) {
+			wp_unschedule_event( $time, $event_name );
 		}
 	}
 
 
 	/**
-	 * Return a Carbon object of when the event is next scheduled to fire.
+	 * Return a DateTime object of when the event is next scheduled to fire.
 	 * 
 	 * @param  string $event_name Name of the wp_cron event.
-	 * @return object|bool        A Carbon DateTime object or false.
+	 * @return object|bool        A DateTime instance or false.
 	 */
-	public static function next_sheduled($event_name = '') 
+	public static function next_sheduled( $event_name = '' ) 
 	{
-		if ( false !== ($time = wp_next_scheduled($event_name)) ) {
-			$date = new Carbon;
-			$date->timestamp = $time;
-			return $date;
+		if ( false !== ( $time = wp_next_scheduled( $event_name ) ) ) {
+            $dt = new \DateTime( "@$time", new \DateTimeZone('UTC') );
+            $tz = Options::get( 'timezone_string', 'UTC' );
+            return $dt->setTimezone( new \DateTimeZone($tz) );
 		}
 		return false;
 	}
 
-	private static function getSecondsInterval($frequency='')
+	private static function get_seconds_interval( $frequency = '' )
 	{
 		$hour = 3600;
-		switch ($frequency) {
-			case 'hourly':
-				return $hour;
-				break;
-			case 'daily':
-				return 24 * $hour;
-				break;
-			case 'weekly':
-				return (24 * 7) * $hour;
-				break;
-			default:
-				return 0;
-				break;
-		}
+        $times = array(
+            'hourly' => $hour,
+            'daily' => 24 * $hour,
+            'weekly' => (24 * 7) * $hour,
+        );
+        
+        return ( isset( $times[$frequency] ) ) ? $times[$frequency] : 0; 
 	}
 
 }
