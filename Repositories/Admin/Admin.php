@@ -145,7 +145,7 @@ class Admin extends Drafty_In_Here implements AdminInterface
 			add_settings_error( 'email_address', 'invalid_email', __( 'Please select how often we send emails.', 'drafty-in-here' ), 'error' );
 		}
 		
-		if ( $settings_array['drafty_frequency'] != self::$options['drafty_frequency'] ) {
+		if ( $settings_array['drafty_frequency'] != self::$options['drafty_frequency'] || false == Scheduler::next_sheduled(self::$cron_name) ) {
 			
 			Scheduler::remove(self::$cron_name); // remove current
 			
