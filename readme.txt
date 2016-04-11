@@ -72,6 +72,7 @@ If you are not receiving emails for example when someone post a comment  or Word
 * Added "support" for the users running php5.2
 = 1.1.1 =
 * Fixed several typos
+* Fixed bug when saving frequency
 * Replaced Carbon with PHP DateTime
 * Changed the minimum version of PHP required by Drafty to 5.3.2
 
