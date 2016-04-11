@@ -21,18 +21,18 @@ if ( ! defined('ABSPATH') ) {
 }
 
 /**
- * Because we our plugin uses namespaces we need at least php5.3 to run
- * If we have php5.3 installed we load the plugin
- * If we do not have php5.3 installed we display an error
+ * Because we our plugin uses namespaces and composer we need at least PHP 5.3.2+ to run
+ * If we have PHP 5.3.2+ installed we load the plugin
+ * If we do not have at least PHP 5.3.2 installed we display an error
  */
-if ( version_compare( PHP_VERSION, '5.3.0', '>=' ) ) {
+if ( version_compare( PHP_VERSION, '5.3.2', '>=' ) ) {
 	require_once 'drafty-main.php';
 }
 else {
 	is_admin() && add_action('admin_notices', create_function('', "
 	echo '
 		<div class=\"error\"><p>".
-		__('Sorry Drafty In Here requires PHP 5.3 to function properly. Please upgrade PHP.', 'drafty-in-here')
+		__('Sorry Drafty In Here requires at least PHP 5.3.2 to function properly. Please upgrade PHP.', 'drafty-in-here')
 		."</p></div>';"
 	));
 }
