@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Drafty In Here
- * Version:     1.1.1
+ * Version:     1.1.2
  * Plugin URI:  https://wordpress.org/plugins/drafty-in-here/
  * Author:      Aron Marriott-Smith <aron@atomace.com>
  * Author URI:  http://aronmarriottsmith.co.uk

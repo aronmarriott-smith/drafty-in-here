@@ -39,16 +39,20 @@ class Scheduler implements SchedulerInterface
 
 	/**
 	 * Return a DateTime object of when the event is next scheduled to fire.
+	 *
+	 * This method tries to convert the scheduled at time to match a user
+	 * defined timezone_string. Should timezone be missing it will ues
+	 * whatever is default.
 	 * 
 	 * @param  string $event_name Name of the wp_cron event.
-	 * @return object|bool        A DateTime instance or false.
+	 * @return object|bool		A DateTime instance or false.
 	 */
 	public static function next_sheduled( $event_name = '' ) 
 	{
 		if ( false !== ( $time = wp_next_scheduled( $event_name ) ) ) {
-            $dt = new \DateTime( "@$time", new \DateTimeZone('UTC') );
-            $tz = Options::get( 'timezone_string', 'UTC' );
-            return $dt->setTimezone( new \DateTimeZone($tz) );
+			$dt = new \DateTime( "@$time", new \DateTimeZone('UTC') );
+			$tz = Options::get( 'timezone_string', false );
+			return empty( $tz ) ? $dt : $dt->setTimezone( new \DateTimeZone($tz) );
 		}
 		return false;
 	}
@@ -56,13 +60,13 @@ class Scheduler implements SchedulerInterface
 	private static function get_seconds_interval( $frequency = '' )
 	{
 		$hour = 3600;
-        $times = array(
-            'hourly' => $hour,
-            'daily' => 24 * $hour,
-            'weekly' => (24 * 7) * $hour,
-        );
-        
-        return ( isset( $times[$frequency] ) ) ? $times[$frequency] : 0; 
+		$times = array(
+			'hourly' => $hour,
+			'daily' => 24 * $hour,
+			'weekly' => (24 * 7) * $hour,
+		);
+		
+		return ( isset( $times[$frequency] ) ) ? $times[$frequency] : 0; 
 	}
 
 }
