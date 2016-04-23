@@ -209,7 +209,8 @@ class Drafty_In_Here
 	 * Method called by wp_con event
 	 *
 	 * Here we build up the email contents and pass it to our Email class.
-	 *
+	 * @todo: return a call to an event rather than boolean
+	 * 
 	 * @param  bool $test Weather we are testing the callback or not
 	 * @return bool|void If no draft posts are found returns false
 	 */
@@ -228,7 +229,9 @@ class Drafty_In_Here
 		$text = $this->build_message($posts, $test);
 		$html = nl2br($text);
 
-		return Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
+		Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
+		
+		return true;
 	}
 
 	public function build_message($posts, $test)
