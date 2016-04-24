@@ -78,6 +78,6 @@ class Drafty_Repositories_Admin_Test extends Drafty_UnitTestCase {
 		$this->assertTrue( $res['drafty_frequency'] === 'hourly' );
 
 		$next_scheduled = wp_next_scheduled( $this->cron_name );
-		$this->assertTrue( is_string( $next_scheduled ) );
+		$this->assertTrue( is_numeric( $next_scheduled ) );
 	}
 }
