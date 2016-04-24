@@ -28,6 +28,6 @@
             "Drafty\\Repositories\\": "Repositories"
         }
     },
-    "minimum-stability": "development",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
