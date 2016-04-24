@@ -135,12 +135,12 @@ class Admin extends Drafty_In_Here implements AdminInterface
 	 */
 	public function validate_basic_options_section($settings_array = array())
 	{
-		if ( ! is_email( $settings_array['email_address'] ) ) {
+		if ( empty($settings_array['email_address']) || ! is_email( $settings_array['email_address'] ) ) {
 			$settings_array['email_address'] = '';
 			add_settings_error( 'email_address', 'invalid_email', __( 'Please enter a valid email address.', 'drafty-in-here' ), 'error' );
 		}
 
-		if ( ! in_array( $settings_array['drafty_frequency'], array('never', 'hourly', 'daily', 'weekly') ) ) {
+		if ( empty($settings_array['drafty_frequency']) || ! in_array( $settings_array['drafty_frequency'], array('never', 'hourly', 'daily', 'weekly') ) ) {
 			$settings_array['drafty_frequency'] = '';
 			add_settings_error( 'email_address', 'invalid_email', __( 'Please select how often we send emails.', 'drafty-in-here' ), 'error' );
 		}
