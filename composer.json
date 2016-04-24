@@ -1,7 +1,33 @@
 {
-	"autoload": {
-		"psr-4": {
-			"Drafty\\Repositories\\": "Repositories"
-		}
-	}
+    "name": "aron-marriott-smith/drafty-in-here",
+    "description": "Get email notifications of draft post sitting in your WordPress Blog waiting to be published.",
+    "keywords": [
+      "wordpress",
+      "drafts"
+    ],
+    "homepage": "https://wordpress.org/plugins/drafty-in-here/",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Aron Marriott-Smith",
+            "email": "aron@atomace.com",
+            "homepage": "http://aronmarriottsmith.co.uk"
+        }
+    ],
+    "type": "wordpress-plugin",
+    "support": {
+        "issues": "https://github.com/aronmarriott-smith/drafty-in-here/issues",
+        "forum": "https://wordpress.org/support/plugin/drafty-in-here",
+        "source": "https://github.com/aronmarriott-smith/drafty-in-here"
+    },
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drafty\\Repositories\\": "Repositories"
+        }
+    },
+    "minimum-stability": "development",
+    "prefer-stable": true
 }
