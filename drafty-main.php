@@ -221,17 +221,21 @@ class Drafty_In_Here
 		} catch (\Exception $e) {
 			// we have no posts
 			if (false === $test) return false;
-			$posts=null;
+			$posts = null;
 		}
-
-		$to = self::$options['email_address'];
-		$subject = __('You have drafts waiting to be published', 'drafty-in-here');
-		$text = $this->build_message($posts, $test);
-		$html = nl2br($text);
-
-		Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
 		
-		return true;
+		if ( $test || $posts) {
+			$to = self::$options['email_address'];
+			$subject = __('You have drafts waiting to be published', 'drafty-in-here');
+			$text = $this->build_message($posts, $test);
+			$html = nl2br($text);
+			
+			Email::to($to)->subject($subject)->text($text)->HTML($html)->send();
+			
+			return true;
+		}
+		
+		return false;
 	}
 
 	public function build_message($posts, $test)
