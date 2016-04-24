@@ -14,9 +14,9 @@ class Drafty_Repositories_Admin_Test extends Drafty_UnitTestCase {
 	 */
 	protected $cron_name;
 
-	public function startUp()
+	public function setUp()
 	{
-		parent::startUp();
+		parent::setUp();
 
 		$admin = new Admin;
 		$this->instance = $admin;
