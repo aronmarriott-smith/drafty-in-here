@@ -37,15 +37,16 @@ class Drafty_Repositories_Email_Test extends Drafty_UnitTestCase {
 		$res = Email::to($to)->subject('My Subject')->text('My Message')->HTML(null)->send();
 		$this->assertTrue( $res );
 
-		$res = Email::to($to)->subject('My Subject')->text(null)->HTML('<p>Some HTML</p>')->send();
-		$this->assertTrue( $res );
-
 		// invalid email
 		$res = Email::to('example.com')->subject('My Subject')->text('My Message')->HTML('<p>Some HTML</p>')->send();
 		$this->assertFalse( $res );
-		
+
 		// no subject
 		$res = Email::to($to)->subject(null)->text('My Message')->HTML('<p>Some HTML</p>')->send();
+		$this->assertFalse( $res );
+
+		// no message text
+		$res = Email::to($to)->subject('My Subject')->text(null)->HTML('<p>Some HTML</p>')->send();
 		$this->assertFalse( $res );
 
 		// no message text or HTML
