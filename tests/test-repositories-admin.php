@@ -1,6 +1,6 @@
 <?php
 
-Use Repositories\Email\Admin;
+Use Repositories\Admin\Admin;
 
 class Drafty_Repositories_Admin_Test extends Drafty_UnitTestCase {
 	
