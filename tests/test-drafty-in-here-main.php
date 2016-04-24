@@ -48,12 +48,16 @@ class Drafty_In_Here_Test extends Drafty_UnitTestCase {
 	}
 
 	/**
-	 * @expectedException Exception
 	 * @covers Drafty_In_Here::get_posts
 	 */
 	public function test_get_posts_when_no_draft_posts_exist_exception_thrown()
 	{
-		$this->expectException( $this->instance->get_posts() );
+		try {
+			$this->instance->get_posts();
+			$this->fail( 'Expected exception not thrown' );
+		} catch (\Exception $e) {
+			$this->assertEquals($e->getMessage(), "You have no draft posts so drafty can't send you an email.");
+		}
 	}
 
 	/**
