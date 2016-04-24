@@ -57,7 +57,7 @@ class Email implements EmailInterface
 	public static function send()
 	{
 		self::buildMessage();
-		if (self::validate(self::$to, self::$subject, self::$message)) {
+		if (true === self::validate(self::$to, self::$subject, self::$message)) {
 			return wp_mail(self::$to, self::$subject, self::$message, self::$headers);
 		}
 		return false;
@@ -70,25 +70,21 @@ class Email implements EmailInterface
 	 * @param  string $to      The email addresses we are sending to.
 	 * @param  string $subject The subject of the email.
 	 * @param  string $message The content of the email.
-	 * @return bool            Weather validation passes.
+	 * @return bool|\WP_Error
 	 */
-	private static function validate($to='', $subject='', $message='')
+	public static function validate($to='', $subject='', $message='')
 	{
-		$valid = true;
 		if (! is_email($to)) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because email is not valid.", 'drafty-in-here' ) );
-			$valid = false;
 		}
 		if (empty($subject)) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because there is no subject.", 'drafty-in-here' ) );
-			$valid = false;
 		}
 		if (empty($message)) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because there is no message.", 'drafty-in-here' ) );
-			$valid = false;
 		}
 
-		return $valid;
+		return true;
 	}
 
 
