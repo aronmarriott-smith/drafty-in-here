@@ -1,4 +1,4 @@
-<?php namespace Repositories\Scheduler;
+<?php namespace Drafty\Repositories\Scheduler;
 
 interface SchedulerInterface 
 {

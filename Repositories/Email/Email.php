@@ -1,6 +1,7 @@
-<?php namespace Repositories\Email;
+<?php namespace Drafty\Repositories\Email;
 
 use Repositories\Email\EmailerInterface;
+use Drafty\Repositories\Email\EmailInterface;
 
 class Email implements EmailInterface 
 {

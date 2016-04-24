@@ -1,4 +1,4 @@
-<?php namespace Repositories\Options;
+<?php namespace Drafty\Repositories\Options;
 
 interface OptionsInterface
 {

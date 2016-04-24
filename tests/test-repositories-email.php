@@ -1,6 +1,6 @@
 <?php
 
-Use Repositories\Email\Email;
+Use Drafty\Repositories\Email\Email;
 
 class Drafty_Repositories_Email_Test extends Drafty_UnitTestCase {
 	

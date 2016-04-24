@@ -10,10 +10,10 @@ if ( ! defined('ABSPATH') ) {
  * Load our plugin dependencies
  */
 require_once 'vendor/autoload.php';
-use Repositories\Admin\Admin;
-use Repositories\Email\Email;
-use Repositories\Options\Options;
-use Repositories\Scheduler\Scheduler;
+use Drafty\Repositories\Admin\Admin;
+use Drafty\Repositories\Email\Email;
+use Drafty\Repositories\Options\Options;
+use Drafty\Repositories\Scheduler\Scheduler;
 
 
 /**

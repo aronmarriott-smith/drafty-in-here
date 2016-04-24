@@ -1,8 +1,8 @@
-<?php namespace Repositories\Admin;
+<?php namespace Drafty\Repositories\Admin;
 
 use \Drafty_In_Here;
-use Repositories\Scheduler\Scheduler;
-use Repositories\Options\Options;
+use Drafty\Repositories\Scheduler\Scheduler;
+use Drafty\Repositories\Options\Options;
 
 class Admin extends Drafty_In_Here implements AdminInterface 
 {

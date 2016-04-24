@@ -1,4 +1,4 @@
-<?php namespace Repositories\Email;
+<?php namespace Drafty\Repositories\Email;
 
 interface EmailInterface 
 {

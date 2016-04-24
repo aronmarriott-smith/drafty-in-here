@@ -1,7 +1,7 @@
 {
 	"autoload": {
 		"psr-4": {
-			"Repositories\\": "Repositories"
+			"Drafty\\Repositories\\": "Repositories"
 		}
 	}
 }

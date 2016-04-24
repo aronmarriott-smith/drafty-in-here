@@ -1,6 +1,7 @@
-<?php namespace Repositories\Scheduler;
+<?php namespace Drafty\Repositories\Scheduler;
 
-use Repositories\Options\Options;
+use Drafty\Repositories\Options\Options;
+use Drafty\Repositories\Scheduler\SchedulerInterface;
 
 class Scheduler implements SchedulerInterface
 {

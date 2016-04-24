@@ -1,4 +1,4 @@
-<?php namespace Repositories\Admin;
+<?php namespace Drafty\Repositories\Admin;
 
 interface AdminInterface 
 {

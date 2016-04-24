@@ -1,4 +1,6 @@
-<?php namespace Repositories\Options;
+<?php namespace Drafty\Repositories\Options;
+
+use Drafty\Repositories\Options\OptionsInterface;
 
 class Options implements OptionsInterface 
 {
