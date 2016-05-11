@@ -88,13 +88,13 @@ class Email implements EmailInterface
 		return true;
 	}
 
-
 	/**
 	 * Builds a multipart HTML and plain text message if both text and HTML have been supplied
 	 * @return void
 	 */
 	private static function buildMessage()
 	{
+		
 		$message = '';
 		$headers = "MIME-Version: 1.0\r\n";
 		$boundary = uniqid('np');
