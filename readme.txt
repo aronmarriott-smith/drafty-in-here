@@ -3,7 +3,7 @@ Contributors: AronMS
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty, draft, reminders, notifications, blog
 Requires at least: 4.3
 Tested up to: 4.5.2
-Stable tag: 1.1.3
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,9 +81,12 @@ Our plugin works off the 'WordPress Cron' mechanism which means your email can o
 * Fixed potential namespacing issue
 * Several bug fixes identified while writing unit tests
 = 1.2.0 =
-* Fixed issue where link to setting screen was not appearing on the plugins screen.
-* Added links to FAQ and reviews in the plugins screen
+* Updated screenshot
+* Updated translation pot file
 * Improvements to plugin documentation
+* Added links to FAQ and reviews in the plugins screen
+* Updated some translation strings so that the brand name is irrelevant
+* Fixed issue where link to setting screen was not appearing on the plugins screen.
 * Changed Drafty In Here emails to be plain text rather than multipart (due to broken WordPress core implementation which may be fixed in 4.6)
 
 == Discussion / Support ==
