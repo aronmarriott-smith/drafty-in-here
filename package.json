@@ -1,0 +1,25 @@
+{
+  "name": "drafty-in-here",
+  "version": "1.2.0",
+  "description": "WordPress plugin",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aronmarriott-smith/drafty-in-here.git"
+  },
+  "author": "Aron Marriott-Smith",
+  "license": "GLP-3.0",
+  "bugs": {
+    "url": "https://github.com/aronmarriott-smith/drafty-in-here/issues"
+  },
+  "homepage": "https://github.com/aronmarriott-smith/drafty-in-here#readme",
+  "devDependencies": {
+    "grunt-wp-i18n": "^0.5.4"
+  }
+}
