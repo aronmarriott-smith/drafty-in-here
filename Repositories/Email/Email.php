@@ -14,39 +14,39 @@ class Email implements EmailInterface
 	public static $message;
 	public static $headers;
 
-	public static function to($to)
+	public static function to( $to )
 	{
-		static::$to=$to;
+		static::$to = $to;
 		return new static;
 	}
 
-	public static function from($from)
+	public static function from( $from )
 	{
-		static::$from=$from;
+		static::$from = $from;
 		return new static;
 	}
 
-	public static function subject($subject)
+	public static function subject( $subject )
 	{
-		static::$subject=$subject;
+		static::$subject = $subject;
 		return new static;
 	}
 
-	public static function text($text)
+	public static function text( $text )
 	{
-		static::$text=$text;
+		static::$text = $text;
 		return new static;
 	}
 
-	public static function HTML($HTML)
+	public static function HTML( $HTML )
 	{
-		static::$HTML=$HTML;
+		static::$HTML = $HTML;
 		return new static;
 	}
 
-	public static function headers($headers)
+	public static function headers( $headers )
 	{
-		static::$headers=$headers;
+		static::$headers = $headers;
 		return new static;
 	}
 
@@ -58,8 +58,8 @@ class Email implements EmailInterface
 	public static function send()
 	{
 		self::buildMessage();
-		if (true === self::validate(self::$to, self::$subject, self::$message)) {
-			return wp_mail(self::$to, self::$subject, self::$message, self::$headers);
+		if ( true === self::validate( self::$to, self::$subject, self::$message ) ) {
+			return wp_mail( self::$to, self::$subject, self::$message, self::$headers );
 		}
 		return false;
 	}
@@ -73,15 +73,15 @@ class Email implements EmailInterface
 	 * @param  string $message The content of the email.
 	 * @return bool|\WP_Error
 	 */
-	public static function validate($to='', $subject='', $message='')
+	public static function validate( $to = '', $subject = '', $message = '' )
 	{
-		if (! is_email($to)) {
+		if ( ! is_email( $to ) ) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because email is not valid.", 'drafty-in-here' ) );
 		}
-		if (empty($subject)) {
+		if ( empty( $subject ) ) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because there is no subject.", 'drafty-in-here' ) );
 		}
-		if (empty($message)) {
+		if ( empty( $message ) ) {
 			return new \WP_Error( 'drafty-email', __( "Can't send email because there is no message.", 'drafty-in-here' ) );
 		}
 
@@ -89,47 +89,16 @@ class Email implements EmailInterface
 	}
 
 	/**
-	 * Builds a multipart HTML and plain text message if both text and HTML have been supplied
+	 * Sets the message depending on what has been supplied
 	 * @return void
 	 */
 	private static function buildMessage()
 	{
-		
 		$message = '';
-		$headers = "MIME-Version: 1.0\r\n";
-		$boundary = uniqid('np');
-		$boundary_section = "\r\n\r\n--" . $boundary . "\r\n";
-		$boundary_end = "\r\n\r\n--" . $boundary . "\r\n";
-
-		if (! empty(self::$HTML) && ! empty(self::$text)) {
-			$headers .= "Content-Type: multipart/alternative; boundary=" . $boundary . "\r\n";
-
-			$message .= $boundary_section;
-			$message .= "Content-type: text/plain; charset=UTF-8;\r\nContent-Transfer-Encoding: QUOTED-PRINTABLE\r\nContent-Disposition: inline\r\n\r\n";
-			$message .= self::$text;
-			$message .= $boundary_section;
-			$message .= "Content-type: text/html; charset=UTF-8;\r\nContent-Transfer-Encoding: QUOTED-PRINTABLE\r\nContent-Disposition: inline\r\n\r\n";
-			$message .= self::$HTML;
-			$message .= $boundary_end;
-		}
-		elseif(! empty(self::$text)) {
-			$headers .= "Content-Type: text/plain; boundary=" . $boundary . "\r\n";
-
-			$message .= $boundary_section;
-			$message .= "Content-type: text/plain; charset=UTF-8;\r\nContent-Transfer-Encoding: QUOTED-PRINTABLE\r\nContent-Disposition: inline\r\n\r\n";
-			$message .= self::$text;
-			$message .= $boundary_end;
-		}
-		elseif(! empty(self::$html)) {
-			$headers .= "Content-Type: text/html; boundary=" . $boundary . "\r\n";
-
-			$message .= $boundary_section;
-			$message .= "Content-type: text/html; charset=UTF-8;\r\nContent-Transfer-Encoding: QUOTED-PRINTABLE\r\nContent-Disposition: inline\r\n\r\n";
-			$message .= self::$html;
-			$message .= $boundary_end;
+		if ( ! empty( self::$text ) ) {
+			$message = self::$text;
 		}
 
-		static::$headers = $headers;
 		static::$message = $message;
 	}
 

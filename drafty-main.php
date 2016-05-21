@@ -165,10 +165,19 @@ class Drafty_In_Here
 	 * @return mixed
 	 */
 	public function add_action_link( $links, $file ) {
-		if ( $file == DRAFTY_BASENAME ) {
-			$settings_link = '<a href="options-general.php?page=' . dirname( DRAFTY_BASENAME ) . '">' . __( 'Settings', 'drafty-in-here' ) . '</a>';
-			array_unshift( $links, $settings_link );
+		if ( $file != DRAFTY_BASENAME ) {
+			return $links;
 		}
+		
+		$review_link = '<a href="https://wordpress.org/support/view/plugin-reviews/drafty-in-here">' . __( 'Review', 'drafty-in-here' ) . '</a>';
+		array_unshift( $links, $review_link );
+
+		$support_link = '<a href="https://wordpress.org/plugins/drafty-in-here/faq/">' . __( 'FAQ', 'drafty-in-here' ) . '</a>';
+		array_unshift( $links, $support_link );
+
+		$settings_link = '<a href="' . esc_url( admin_url( 'options-general.php?page=' . dirname( DRAFTY_BASENAME ) ) ) . '">' . __( 'Settings', 'drafty-in-here' ) . '</a>';
+
+		array_unshift( $links, $settings_link );
 
 		return $links;
 	}
@@ -194,7 +203,7 @@ class Drafty_In_Here
 		$posts = new WP_Query( $args );
 
 		if ( ! $posts->have_posts() ) {
-			throw new \Exception( "You have no draft posts so drafty can't send you an email.", 1 );
+			throw new \Exception( "You have no draft posts so Drafty In Here can't send you an email.", 1 );
 		}
 		return $posts;
 	}
@@ -266,7 +275,7 @@ class Drafty_In_Here
 		if ( ! $posts && $test ) {
 			$message .= sprintf( __( 'Right now on %s you have zero draft posts:', 'drafty-in-here' ), Options::get( 'blogname' ) );
 		}
-		$message .= "\r\n";
+		$message .= "\r\n\r\n";
 		
 		if ( $posts ) {
 			while ( $posts->have_posts() ) {

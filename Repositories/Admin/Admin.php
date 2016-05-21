@@ -109,6 +109,9 @@ class Admin extends Drafty_In_Here implements AdminInterface
 		?>
 	 	<label for="drafty_options[drafty_send_test]"><input name="drafty_options[drafty_send_test]" id="drafty_options[drafty_send_test]" type="checkbox" aria-describedby="send_test-description" value="1"/>
 	 	<?php _e( 'Send a test e-mail when you save changes', 'drafty-in-here' ); ?></label>
+	 	<p class="timezone-info"><?php _e( 'If you are not receiving emails,', 'drafty-in-here' ); ?>
+	 		<a href="https://wordpress.org/plugins/drafty-in-here/other_notes/" target="_blank"><?php _e( 'try this guide', 'drafty-in-here' ); ?>.</a>
+		</p>
 	<?php
 	}	 
 
@@ -119,10 +122,12 @@ class Admin extends Drafty_In_Here implements AdminInterface
 	{ 
 		$date = Scheduler::next_sheduled( self::$cron_name );
 		if ( false !== $date ) {
-			$text = sprintf( __( 'Drafty is next scheduled to run %s', 'drafty-in-here' ), 
-				$date->format( 'F j, Y, g:i a T' )
-			);
-			echo '<p>' . $text . '</p>';
+			$text = __( 'Drafty In Here is next scheduled to run', 'drafty-in-here' );
+	?>
+		<div class="notice notice-info" style="display: inline-block;">
+			<p><?php echo $text ?>: <code><?php echo $date->format( 'F jS Y, g:i a T' ) ?></code>.</p>
+		</div>
+	<?php
 		}
 	}
 

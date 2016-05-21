@@ -9,7 +9,7 @@
  * Domain Path: /languages/
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Description: Get email notifications of draft post sitting in your WordPress Blog waiting to be published.
+ * Description: Get email notifications of draft posts sitting in your WordPress Blog waiting to be published.
  */
 
 

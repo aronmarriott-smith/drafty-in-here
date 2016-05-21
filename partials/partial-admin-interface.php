@@ -4,7 +4,7 @@
  */
 ?>
 <div class="wrap">
-	<h2><?php _e('Drafty In Here Settings', 'drafty-in-here'); ?></h2>
+	<h2><?php _e( 'Drafty In Here Settings', 'drafty-in-here' ); ?></h2>
 	<form action="options.php" method="post">
 		
 		<?php 
