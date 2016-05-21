@@ -40,7 +40,7 @@ else {
 	is_admin() && add_action('admin_notices', create_function('', "
 	echo '
 		<div class=\"error\"><p>".
-		__('Sorry Drafty In Here requires at least PHP 5.3.2 to function properly. Please upgrade PHP.', 'drafty-in-here')
+		sprintf( __('Sorry %s requires at least PHP 5.3.2 to function properly. Please upgrade PHP.', 'drafty-in-here'), 'Drafty In Here')
 		."</p></div>';"
 	));
 }

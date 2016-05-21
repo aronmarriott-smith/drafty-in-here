@@ -19,8 +19,8 @@ class Admin extends Drafty_In_Here implements AdminInterface
 	 */
 	public function add_admin_menu() 
 	{
-		$page_title  = __( 'Drafty In Here Options', 'drafty-in-here' );
-		$menu_title  = __( 'Drafty In Here', 'drafty-in-here' );
+		$page_title  = sprintf( __( '%s Options', 'drafty-in-here' ), 'Drafty In Here' );
+		$menu_title  = 'Drafty In Here';
 		$capability  = 'manage_options';
 		$menu_slug   = 'drafty-in-here';
 		$function    = 'admin_interface';
@@ -38,7 +38,7 @@ class Admin extends Drafty_In_Here implements AdminInterface
 
 		add_settings_section(
 			'drafty_basic_settings_section', 
-			__( '', 'drafty-in-here' ), 
+			'', 
 			array( $this, 'drafty_options_section_callback' ), 
 			'draftySettingsPage'
 		);
@@ -109,20 +109,31 @@ class Admin extends Drafty_In_Here implements AdminInterface
 		?>
 	 	<label for="drafty_options[drafty_send_test]"><input name="drafty_options[drafty_send_test]" id="drafty_options[drafty_send_test]" type="checkbox" aria-describedby="send_test-description" value="1"/>
 	 	<?php _e( 'Send a test e-mail when you save changes', 'drafty-in-here' ); ?></label>
-	 	<p class="timezone-info"><?php _e( 'If you are not receiving emails,', 'drafty-in-here' ); ?>
-	 		<a href="https://wordpress.org/plugins/drafty-in-here/other_notes/" target="_blank"><?php _e( 'try this guide', 'drafty-in-here' ); ?>.</a>
+	 	<p class="timezone-info">
+		<?php
+		$url = 'https://wordpress.org/plugins/drafty-in-here/other_notes/';
+		$link = sprintf(
+			wp_kses(
+				__( 'If you are not receiving emails, <a href="%s" target="_blank">try this guide</a>.', 'my-text-domain' ),
+				array( 'a' => array( 'href' => array(), 'target' => array() ) )
+			),
+			esc_url( $url )
+		);
+		echo $link;
+		?> 		
 		</p>
 	<?php
 	}	 
 
 	/**
 	 * For some reason WordPress requires a callback function at the start of each settings section
+	 * @todo change the date format call to use the setting from WordPess
 	 */
 	public function drafty_options_section_callback() 
 	{ 
 		$date = Scheduler::next_sheduled( self::$cron_name );
 		if ( false !== $date ) {
-			$text = __( 'Drafty In Here is next scheduled to run', 'drafty-in-here' );
+			$text = sprintf( __( '%s is next scheduled to run', 'drafty-in-here' ), 'Drafty In Here' );
 	?>
 		<div class="notice notice-info" style="display: inline-block;">
 			<p><?php echo $text ?>: <code><?php echo $date->format( 'F jS Y, g:i a T' ) ?></code>.</p>
