@@ -2,7 +2,7 @@
 Contributors: AronMS
 Tags: productivity, focus, motivation, drafts, draft posts, notify, emails, drafty, draft, reminders, notifications, blog
 Requires at least: 4.3
-Tested up to: 4.5.2
+Tested up to: 4.6
 Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
